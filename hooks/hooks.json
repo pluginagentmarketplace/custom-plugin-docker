@@ -1,50 +1,51 @@
 {
   "hooks": [
     {
-      "name": "docker-setup-welcome",
-      "description": "Show Docker setup guide on first use",
-      "trigger": "on-first-use",
-      "command": "/docker-setup"
+      "name": "learning-path-tracker",
+      "description": "Track user progress through learning paths",
+      "trigger": "on-agent-start",
+      "action": "initialize-progress"
     },
     {
-      "name": "docker-learning-tracker",
-      "description": "Track user progress through Docker learning paths",
-      "trigger": "on-agent-complete",
+      "name": "skill-validation",
+      "description": "Validate skill completion and progress",
+      "trigger": "on-skill-complete",
       "action": "update-progress"
     },
     {
-      "name": "docker-command-suggestions",
-      "description": "Suggest relevant Docker commands based on context",
-      "trigger": "on-agent-invoke",
-      "action": "suggest-commands"
+      "name": "assessment-recommendations",
+      "description": "Provide personalized learning recommendations based on assessment results",
+      "trigger": "on-assessment-complete",
+      "action": "generate-recommendations"
     },
     {
-      "name": "docker-security-reminder",
-      "description": "Remind about security best practices before deployment",
-      "trigger": "on-deploy-command",
-      "action": "security-checklist"
+      "name": "project-suggestions",
+      "description": "Suggest relevant projects based on completed skills",
+      "trigger": "on-skill-learn",
+      "action": "suggest-projects"
+    },
+    {
+      "name": "roadmap-discovery",
+      "description": "Suggest roadmaps based on user interests",
+      "trigger": "on-agent-enter",
+      "action": "discover-roadmaps"
     }
   ],
-  "auto-suggestions": [
+  "auto-triggers": [
     {
-      "keyword": "image",
-      "suggest": "/docker-build-run"
+      "trigger": "first-use",
+      "action": "/agent-guide",
+      "description": "Show agent guide on first use"
     },
     {
-      "keyword": "compose",
-      "suggest": "/docker-compose-ops"
+      "trigger": "agent-complete",
+      "action": "/skill-assessment",
+      "description": "Recommend assessment after agent completion"
     },
     {
-      "keyword": "deploy",
-      "suggest": "/docker-deploy-monitor"
-    },
-    {
-      "keyword": "security",
-      "suggest": "docker-security"
-    },
-    {
-      "keyword": "kubernetes",
-      "suggest": "docker-kubernetes"
+      "trigger": "assessment-low-score",
+      "action": "suggest-learning-path",
+      "description": "Suggest learning path for weak areas"
     }
   ]
 }
