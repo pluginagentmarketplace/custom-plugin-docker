@@ -1,0 +1,40 @@
+{
+  "hooks": [
+    {
+      "name": "progress-tracking",
+      "description": "Automatically track user progress through learning paths",
+      "trigger": "on-skill-complete",
+      "action": "update-progress"
+    },
+    {
+      "name": "project-validation",
+      "description": "Validate completed projects against evaluation criteria",
+      "trigger": "on-project-submit",
+      "action": "validate-project"
+    },
+    {
+      "name": "recommendation-engine",
+      "description": "Provide personalized recommendations based on assessment results",
+      "trigger": "on-assessment-complete",
+      "action": "generate-recommendations"
+    },
+    {
+      "name": "skill-reinforcement",
+      "description": "Suggest related skills and learning resources",
+      "trigger": "on-skill-learn",
+      "action": "suggest-related-skills"
+    }
+  ],
+  "auto_commands": [
+    {
+      "trigger": "user-starts-session",
+      "command": "/browse-agent",
+      "description": "Show available agents on first session"
+    },
+    {
+      "trigger": "after-first-project",
+      "command": "/assess",
+      "description": "Recommend assessment after first project completion"
+    }
+  ]
+}
