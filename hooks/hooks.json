@@ -1,40 +1,50 @@
 {
   "hooks": [
     {
-      "name": "progress-tracking",
-      "description": "Automatically track user progress through learning paths",
-      "trigger": "on-skill-complete",
+      "name": "docker-setup-welcome",
+      "description": "Show Docker setup guide on first use",
+      "trigger": "on-first-use",
+      "command": "/docker-setup"
+    },
+    {
+      "name": "docker-learning-tracker",
+      "description": "Track user progress through Docker learning paths",
+      "trigger": "on-agent-complete",
       "action": "update-progress"
     },
     {
-      "name": "project-validation",
-      "description": "Validate completed projects against evaluation criteria",
-      "trigger": "on-project-submit",
-      "action": "validate-project"
+      "name": "docker-command-suggestions",
+      "description": "Suggest relevant Docker commands based on context",
+      "trigger": "on-agent-invoke",
+      "action": "suggest-commands"
     },
     {
-      "name": "recommendation-engine",
-      "description": "Provide personalized recommendations based on assessment results",
-      "trigger": "on-assessment-complete",
-      "action": "generate-recommendations"
-    },
-    {
-      "name": "skill-reinforcement",
-      "description": "Suggest related skills and learning resources",
-      "trigger": "on-skill-learn",
-      "action": "suggest-related-skills"
+      "name": "docker-security-reminder",
+      "description": "Remind about security best practices before deployment",
+      "trigger": "on-deploy-command",
+      "action": "security-checklist"
     }
   ],
-  "auto_commands": [
+  "auto-suggestions": [
     {
-      "trigger": "user-starts-session",
-      "command": "/browse-agent",
-      "description": "Show available agents on first session"
+      "keyword": "image",
+      "suggest": "/docker-build-run"
     },
     {
-      "trigger": "after-first-project",
-      "command": "/assess",
-      "description": "Recommend assessment after first project completion"
+      "keyword": "compose",
+      "suggest": "/docker-compose-ops"
+    },
+    {
+      "keyword": "deploy",
+      "suggest": "/docker-deploy-monitor"
+    },
+    {
+      "keyword": "security",
+      "suggest": "docker-security"
+    },
+    {
+      "keyword": "kubernetes",
+      "suggest": "docker-kubernetes"
     }
   ]
 }

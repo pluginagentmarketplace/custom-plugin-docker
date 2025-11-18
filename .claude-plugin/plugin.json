@@ -1,146 +1,137 @@
 {
-  "name": "Developer Roadmap Plugin",
+  "name": "custom-plugin-docker",
   "version": "1.0.0",
-  "displayName": "Developer Roadmap - 69 Learning Paths",
-  "description": "Comprehensive learning plugin with 7 specialized agents, 69 roadmaps, and 43+ hands-on projects. Master 11 technology domains across frontend, backend, DevOps, AI/ML, mobile, architecture, and security.",
+  "displayName": "Custom Plugin Docker",
+  "description": "Professional Docker & Container Management Plugin - Master containerization, Docker Compose, Kubernetes, CI/CD, networking, security, and production deployment with 7 specialized agents and practical tutorials.",
   "author": "Plugin Agent Marketplace",
   "repository": "https://github.com/pluginagentmarketplace/custom-plugin-docker",
   "keywords": [
-    "learning",
-    "developer-roadmap",
-    "career-growth",
-    "skill-development",
-    "technology-education",
-    "frontend",
-    "backend",
+    "docker",
+    "containers",
+    "docker-compose",
+    "kubernetes",
+    "containerization",
     "devops",
-    "ai-ml",
-    "mobile",
-    "system-design",
-    "security"
+    "ci-cd",
+    "deployment",
+    "security",
+    "container-orchestration"
   ],
   "commands": [
     {
-      "name": "learn",
-      "description": "Start a personalized learning path based on your experience level and interests",
-      "file": "commands/learn.md"
+      "name": "docker-setup",
+      "description": "Docker installation and setup verification guide",
+      "file": "commands/docker-setup.md"
     },
     {
-      "name": "browse-agent",
-      "description": "Explore all 7 specialized agents and their expertise areas",
-      "file": "commands/browse-agent.md"
+      "name": "docker-build-run",
+      "description": "Docker build and container run commands reference",
+      "file": "commands/docker-build-run.md"
     },
     {
-      "name": "assess",
-      "description": "Test your knowledge and get personalized learning recommendations",
-      "file": "commands/assess.md"
+      "name": "docker-compose-ops",
+      "description": "Docker Compose operations and multi-container management",
+      "file": "commands/docker-compose-ops.md"
     },
     {
-      "name": "projects",
-      "description": "Browse 43+ hands-on projects organized by domain and difficulty level",
-      "file": "commands/projects.md"
+      "name": "docker-deploy-monitor",
+      "description": "Production deployment and monitoring commands",
+      "file": "commands/docker-deploy-monitor.md"
     }
   ],
   "agents": [
     {
-      "name": "Frontend & Web Development",
-      "description": "Expert guidance on modern frontend development with React, Vue, Angular, TypeScript, and web technologies",
-      "file": "agents/01-frontend-web-development.md"
+      "name": "Docker Fundamentals",
+      "description": "Master Docker basics - images, containers, Dockerfile syntax, and Docker CLI essentials",
+      "file": "agents/01-docker-fundamentals.md"
     },
     {
-      "name": "Backend & Server-Side Development",
-      "description": "Comprehensive backend expertise covering Node.js, Python, Java, Go, Rust, and scalable server architecture",
-      "file": "agents/02-backend-server-side.md"
+      "name": "Docker Compose & Orchestration",
+      "description": "Production-grade Docker Compose for multi-container applications and service orchestration",
+      "file": "agents/02-docker-compose-orchestration.md"
     },
     {
-      "name": "DevOps & Cloud Infrastructure",
-      "description": "Master of containerization, orchestration, and cloud deployment with Docker, Kubernetes, AWS, Terraform",
-      "file": "agents/03-devops-cloud-infrastructure.md"
+      "name": "Docker Image Management",
+      "description": "Professional image building, optimization, multi-stage builds, and registry management",
+      "file": "agents/03-docker-image-management.md"
     },
     {
-      "name": "AI/ML & Data Science",
-      "description": "Pioneer of intelligent systems with expertise in machine learning, deep learning, and data engineering",
-      "file": "agents/04-ai-ml-data-science.md"
+      "name": "Docker Networking & Storage",
+      "description": "Container networking, volumes, data persistence, and storage driver strategies",
+      "file": "agents/04-docker-networking-storage.md"
     },
     {
-      "name": "Mobile Development",
-      "description": "Creator of mobile experiences with Swift, Kotlin, React Native, and Flutter expertise",
-      "file": "agents/05-mobile-development.md"
+      "name": "Docker & Kubernetes",
+      "description": "Running Docker containers at scale with Kubernetes - Deployments, Services, and orchestration",
+      "file": "agents/05-docker-kubernetes-orchestration.md"
     },
     {
-      "name": "Architecture & Design Patterns",
-      "description": "Designer of scalable systems with expertise in system design, SOLID principles, and enterprise architecture",
-      "file": "agents/06-architecture-design-patterns.md"
+      "name": "Docker CI/CD & Automation",
+      "description": "Automated Docker builds, testing, registry integration, and deployment pipelines",
+      "file": "agents/06-docker-cicd-automation.md"
     },
     {
-      "name": "Security, QA & Career Development",
-      "description": "Guardian of quality and security with expertise in cybersecurity, testing, and professional growth",
-      "file": "agents/07-security-qa-career.md"
+      "name": "Docker Security & Production",
+      "description": "Enterprise-grade security, hardening, secrets management, and production deployment patterns",
+      "file": "agents/07-docker-security-production.md"
     }
   ],
   "skills": [
     {
-      "name": "frontend-development",
-      "description": "Build modern web applications with React, Vue, Angular, and TypeScript. Learn component design, state management, and performance optimization.",
-      "file": "skills/frontend-development/SKILL.md"
+      "name": "docker-basics",
+      "description": "Docker fundamentals - images, containers, Dockerfile, and Docker CLI essentials",
+      "file": "skills/docker-basics/SKILL.md"
     },
     {
-      "name": "backend-development",
-      "description": "Build scalable backend systems with Node.js, Python, Java, Go, and Rust. Learn API design, database optimization, and production deployment.",
-      "file": "skills/backend-development/SKILL.md"
+      "name": "docker-compose",
+      "description": "Docker Compose for multi-container application orchestration and service management",
+      "file": "skills/docker-compose/SKILL.md"
     },
     {
-      "name": "devops-infrastructure",
-      "description": "Master Docker, Kubernetes, AWS, Terraform, and CI/CD pipelines. Learn containerization, orchestration, and infrastructure-as-code.",
-      "file": "skills/devops-infrastructure/SKILL.md"
+      "name": "docker-images",
+      "description": "Docker image building, optimization, multi-stage builds, and registry operations",
+      "file": "skills/docker-images/SKILL.md"
     },
     {
-      "name": "ml-data-engineering",
-      "description": "Build machine learning models and data pipelines with Python, TensorFlow, PyTorch, and Spark. Learn model training, deployment, and MLOps.",
-      "file": "skills/ml-data-engineering/SKILL.md"
+      "name": "docker-networking",
+      "description": "Docker networking, volumes, persistent data, and container communication",
+      "file": "skills/docker-networking/SKILL.md"
     },
     {
-      "name": "mobile-development",
-      "description": "Build iOS and Android apps with Swift, Kotlin, React Native, and Flutter. Learn native development and cross-platform frameworks.",
-      "file": "skills/mobile-development/SKILL.md"
+      "name": "docker-kubernetes",
+      "description": "Docker containers in Kubernetes - Deployments, Services, and production orchestration",
+      "file": "skills/docker-kubernetes/SKILL.md"
     },
     {
-      "name": "system-design",
-      "description": "Master system design and architecture patterns. Learn scalability, reliability, distributed systems, and microservices design.",
-      "file": "skills/system-design/SKILL.md"
+      "name": "docker-cicd",
+      "description": "Docker in CI/CD pipelines - automated builds, testing, and deployment automation",
+      "file": "skills/docker-cicd/SKILL.md"
     },
     {
-      "name": "security-testing",
-      "description": "Master application security, testing strategies, and QA. Learn OWASP Top 10, secure coding, and test automation.",
-      "file": "skills/security-testing/SKILL.md"
+      "name": "docker-security",
+      "description": "Production Docker security, hardening, and best practices for enterprise deployment",
+      "file": "skills/docker-security/SKILL.md"
     }
   ],
   "hooks": {
     "file": "hooks/hooks.json"
   },
   "categories": [
-    "education",
-    "professional-development",
-    "technical-skills",
-    "learning-paths",
-    "career-growth"
+    "devops",
+    "containers",
+    "deployment",
+    "infrastructure",
+    "security"
   ],
   "stats": {
-    "total_roadmaps": 69,
     "total_agents": 7,
     "total_skills": 7,
     "total_commands": 4,
-    "total_projects": 43,
-    "total_learning_hours": 1000,
-    "total_code_examples": 1000
+    "learning_hours": 150,
+    "code_examples": 200
   },
   "requirements": {
     "min_claude_code_version": "1.0.0"
-  },
-  "documentation": {
-    "readme": "README.md",
-    "architecture": "ARCHITECTURE.md",
-    "learning_guide": "LEARNING-PATH.md"
   },
   "license": "MIT"
 }
