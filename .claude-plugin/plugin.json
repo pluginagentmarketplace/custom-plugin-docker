@@ -1,0 +1,127 @@
+{
+  "name": "custom-plugin-docker",
+  "version": "2.0.0",
+  "displayName": "Developer Roadmap Plugin",
+  "description": "Comprehensive learning platform with 7 specialized agents covering 69 developer roles. Master 11 frontend, 11 backend, 7 devops, 7 ML/AI, 6 mobile, 4 architecture technologies plus security, testing, and career development with 43+ hands-on projects.",
+  "author": "Plugin Agent Marketplace",
+  "repository": "https://github.com/pluginagentmarketplace/custom-plugin-docker",
+  "keywords": [
+    "learning",
+    "developer-roadmap",
+    "69-roles",
+    "career-growth",
+    "frontend",
+    "backend",
+    "devops",
+    "ai-ml",
+    "mobile",
+    "system-design",
+    "security"
+  ],
+  "commands": [
+    {
+      "name": "roadmap-explore",
+      "description": "Explore 69 comprehensive developer roadmaps",
+      "file": "commands/roadmap-explore.md"
+    },
+    {
+      "name": "skill-assessment",
+      "description": "Evaluate knowledge across 7 domains",
+      "file": "commands/skill-assessment.md"
+    },
+    {
+      "name": "project-finder",
+      "description": "Find 43+ hands-on projects",
+      "file": "commands/project-finder.md"
+    },
+    {
+      "name": "agent-guide",
+      "description": "Meet the 7 expert agents",
+      "file": "commands/agent-guide.md"
+    }
+  ],
+  "agents": [
+    {
+      "name": "Frontend & Web Development",
+      "description": "Master 11 frontend technologies including React, Vue, Angular, TypeScript, JavaScript, Next.js, CSS, HTML, Svelte",
+      "file": "agents/01-frontend-web-development.md"
+    },
+    {
+      "name": "Backend & Server Development",
+      "description": "Master 11 backend technologies including Node.js, Python, Java, Go, Rust, PHP, Laravel, Spring Boot, ASP.NET Core, SQL, GraphQL",
+      "file": "agents/02-backend-server-development.md"
+    },
+    {
+      "name": "DevOps & Cloud Infrastructure",
+      "description": "Master 7+ DevOps technologies including Docker, Kubernetes, AWS, Azure, GCP, Terraform, CI/CD, Linux",
+      "file": "agents/03-devops-cloud-infrastructure.md"
+    },
+    {
+      "name": "AI/ML & Data Science",
+      "description": "Master 7+ AI/ML technologies including Machine Learning, Deep Learning, Data Engineering, LLMs, MLOps",
+      "file": "agents/04-ai-ml-data-science.md"
+    },
+    {
+      "name": "Mobile & Game Development",
+      "description": "Master 6 mobile technologies including iOS, Android, React Native, Flutter, Game Development",
+      "file": "agents/05-mobile-game-development.md"
+    },
+    {
+      "name": "Architecture & System Design",
+      "description": "Master 4+ architectural approaches including System Design, Design Patterns, Microservices",
+      "file": "agents/06-architecture-design-patterns.md"
+    },
+    {
+      "name": "Security, QA & Career Development",
+      "description": "Master Security, Testing, Leadership: OWASP, Testing Automation, Code Review, Career Planning",
+      "file": "agents/07-security-qa-career.md"
+    }
+  ],
+  "skills": [
+    {"name": "react-development", "description": "React hooks, patterns, testing", "file": "skills/react-development/SKILL.md"},
+    {"name": "vue-angular-frameworks", "description": "Vue.js and Angular expertise", "file": "skills/vue-angular-frameworks/SKILL.md"},
+    {"name": "typescript-frontend", "description": "Advanced TypeScript for frontend", "file": "skills/typescript-frontend/SKILL.md"},
+    {"name": "web-performance-accessibility", "description": "Web performance and WCAG", "file": "skills/web-performance-accessibility/SKILL.md"},
+    {"name": "nodejs-backend", "description": "Node.js backend development", "file": "skills/nodejs-backend/SKILL.md"},
+    {"name": "python-java-go-rust", "description": "Multi-language backends", "file": "skills/python-java-go-rust/SKILL.md"},
+    {"name": "database-sql-advanced", "description": "SQL and database optimization", "file": "skills/database-sql-advanced/SKILL.md"},
+    {"name": "api-design-graphql", "description": "REST and GraphQL APIs", "file": "skills/api-design-graphql/SKILL.md"},
+    {"name": "docker-kubernetes-terraform", "description": "Docker, K8s, Terraform IaC", "file": "skills/docker-kubernetes-terraform/SKILL.md"},
+    {"name": "ci-cd-pipelines", "description": "Automated pipelines and deployment", "file": "skills/ci-cd-pipelines/SKILL.md"},
+    {"name": "cloud-platforms", "description": "AWS, Azure, Google Cloud", "file": "skills/cloud-platforms/SKILL.md"},
+    {"name": "machine-learning-frameworks", "description": "ML with scikit-learn and XGBoost", "file": "skills/machine-learning-frameworks/SKILL.md"},
+    {"name": "deep-learning", "description": "Deep learning with TF and PyTorch", "file": "skills/deep-learning/SKILL.md"},
+    {"name": "data-engineering-pipelines", "description": "Data pipelines with Spark and Kafka", "file": "skills/data-engineering-pipelines/SKILL.md"},
+    {"name": "ios-android-native", "description": "Native iOS and Android apps", "file": "skills/ios-android-native/SKILL.md"},
+    {"name": "react-native-flutter", "description": "React Native and Flutter", "file": "skills/react-native-flutter/SKILL.md"},
+    {"name": "mobile-ui-ux", "description": "Mobile UI/UX and testing", "file": "skills/mobile-ui/SKILL.md"},
+    {"name": "system-design-patterns", "description": "System design and patterns", "file": "skills/system-design-patterns/SKILL.md"},
+    {"name": "microservices-architecture", "description": "Microservices design", "file": "skills/microservices-architecture/SKILL.md"},
+    {"name": "design-systems", "description": "Design systems and components", "file": "skills/design-systems/SKILL.md"},
+    {"name": "security-testing-automation", "description": "Security and test automation", "file": "skills/security-testing-automation/SKILL.md"},
+    {"name": "code-review", "description": "Code review best practices", "file": "skills/code-review/SKILL.md"},
+    {"name": "leadership-career", "description": "Leadership and career growth", "file": "skills/leadership/SKILL.md"}
+  ],
+  "hooks": {
+    "file": "hooks/hooks.json"
+  },
+  "categories": [
+    "education",
+    "career-development",
+    "technology-learning"
+  ],
+  "stats": {
+    "total_agents": 7,
+    "total_skills": 23,
+    "total_commands": 4,
+    "total_roadmaps": 69,
+    "total_technologies": 46,
+    "total_projects": 43,
+    "total_learning_hours": 1500,
+    "total_code_examples": 500
+  },
+  "requirements": {
+    "min_claude_code_version": "1.0.0"
+  },
+  "license": "MIT"
+}
