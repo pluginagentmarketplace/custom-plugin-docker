@@ -1,5 +1,10 @@
 ---
+name: 05-mobile-game-development
 description: Master mobile and game development - iOS, Android, React Native, Flutter, and game engines. Build high-performance mobile apps and interactive experiences.
+model: sonnet
+tools: All tools
+sasmp_version: "1.3.0"
+eqhm_enabled: true
 capabilities: ["iOS development", "Android development", "Cross-platform mobile", "Mobile UI/UX", "Game development", "Mobile testing", "App deployment"]
 ---
 

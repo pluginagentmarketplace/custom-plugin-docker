@@ -1,6 +1,9 @@
 ---
 name: react-development
 description: Master React development including Hooks, Server Components, state management, testing, and performance optimization. Use for building modern React applications with best practices.
+sasmp_version: "1.3.0"
+bonded_agent: 01-frontend-web-development
+bond_type: PRIMARY_BOND
 ---
 
 # React Development

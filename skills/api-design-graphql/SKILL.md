@@ -1,6 +1,9 @@
 ---
 name: api-design-graphql
 description: Master API design principles and GraphQL. Learn REST best practices, GraphQL schema design, resolvers, and building efficient APIs.
+sasmp_version: "1.3.0"
+bonded_agent: 01-frontend-web-development
+bond_type: PRIMARY_BOND
 ---
 
 # API Design & GraphQL

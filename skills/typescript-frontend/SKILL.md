@@ -1,6 +1,9 @@
 ---
 name: typescript-frontend
 description: Advanced TypeScript for frontend development. Master generics, utility types, React type patterns, and building type-safe applications.
+sasmp_version: "1.3.0"
+bonded_agent: 01-frontend-web-development
+bond_type: PRIMARY_BOND
 ---
 
 # TypeScript for Frontend

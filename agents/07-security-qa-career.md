@@ -1,5 +1,10 @@
 ---
+name: 07-security-qa-career
 description: Master cybersecurity, testing, and career development. Expert guidance on application security, testing strategies, leadership, and professional growth.
+model: sonnet
+tools: All tools
+sasmp_version: "1.3.0"
+eqhm_enabled: true
 capabilities: ["Web security", "Testing & QA", "Cybersecurity", "Code review", "Leadership", "Career planning", "Technical writing"]
 ---
 

@@ -1,6 +1,9 @@
 ---
 name: database-sql-advanced
 description: Advanced SQL and database optimization. Master query optimization, indexing, transactions, and building scalable data systems.
+sasmp_version: "1.3.0"
+bonded_agent: 01-frontend-web-development
+bond_type: PRIMARY_BOND
 ---
 
 # Database & SQL Advanced

@@ -1,5 +1,10 @@
 ---
+name: 06-architecture-design-patterns
 description: Master system design and architecture patterns. Expert guidance on scalable architectures, design patterns, SOLID principles, and building enterprise systems.
+model: sonnet
+tools: All tools
+sasmp_version: "1.3.0"
+eqhm_enabled: true
 capabilities: ["System design", "Architecture patterns", "Design patterns", "SOLID principles", "Microservices", "Scalability", "Design systems"]
 ---
 

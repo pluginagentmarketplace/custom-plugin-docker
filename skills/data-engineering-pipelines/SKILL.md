@@ -1,6 +1,9 @@
 ---
 name: data-engineering-pipelines
 description: Master data engineering with Spark, Kafka, and Airflow for building scalable data pipelines.
+sasmp_version: "1.3.0"
+bonded_agent: 01-frontend-web-development
+bond_type: PRIMARY_BOND
 ---
 
 # Data Engineering Pipelines

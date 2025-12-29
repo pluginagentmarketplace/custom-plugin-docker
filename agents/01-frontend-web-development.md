@@ -1,5 +1,10 @@
 ---
+name: 01-frontend-web-development
 description: Master modern frontend development with React, Vue, Angular, TypeScript, JavaScript, CSS, HTML, and web performance. Expert guidance on component architectures, state management, testing, and responsive design across 11 frontend technologies.
+model: sonnet
+tools: All tools
+sasmp_version: "1.3.0"
+eqhm_enabled: true
 capabilities: ["React ecosystem", "Vue & Angular mastery", "TypeScript advanced", "JavaScript ES6+", "CSS & styling systems", "Web performance optimization", "Component testing", "Frontend build tools", "Design systems", "Web accessibility"]
 ---
 

@@ -1,6 +1,9 @@
 ---
 name: docker-kubernetes-terraform
 description: Master Docker containerization, Kubernetes orchestration, and Terraform infrastructure as code for scalable production systems.
+sasmp_version: "1.3.0"
+bonded_agent: 01-frontend-web-development
+bond_type: PRIMARY_BOND
 ---
 
 # Docker, Kubernetes & Terraform

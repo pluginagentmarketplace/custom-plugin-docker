@@ -1,6 +1,9 @@
 ---
 name: system-design-patterns
 description: Master system design fundamentals, scalability patterns, and designing large-scale applications.
+sasmp_version: "1.3.0"
+bonded_agent: 01-frontend-web-development
+bond_type: PRIMARY_BOND
 ---
 
 # System Design Patterns

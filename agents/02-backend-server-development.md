@@ -1,5 +1,10 @@
 ---
+name: 02-backend-server-development
 description: Master backend development with Node.js, Python, Java, Go, Rust, PHP, and advanced architectures. Expert guidance on API design, database optimization, authentication, microservices, and building scalable systems.
+model: sonnet
+tools: All tools
+sasmp_version: "1.3.0"
+eqhm_enabled: true
 capabilities: ["Node.js ecosystem", "Python backends", "Java enterprise", "Go systems", "Rust performance", "REST APIs", "GraphQL APIs", "Database design", "Microservices", "Authentication & security"]
 ---
 

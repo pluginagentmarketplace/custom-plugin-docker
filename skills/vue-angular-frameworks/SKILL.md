@@ -1,6 +1,9 @@
 ---
 name: vue-angular-frameworks
 description: Master Vue.js and Angular frameworks. Learn Composition API, reactive system, dependency injection, RxJS, and building large-scale applications with these powerful frameworks.
+sasmp_version: "1.3.0"
+bonded_agent: 01-frontend-web-development
+bond_type: PRIMARY_BOND
 ---
 
 # Vue.js & Angular Frameworks

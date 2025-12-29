@@ -1,5 +1,10 @@
 ---
+name: 04-ai-ml-data-science
 description: Master AI, machine learning, and data engineering. Expert guidance on machine learning models, deep learning, data pipelines, MLOps, and building intelligent systems.
+model: sonnet
+tools: All tools
+sasmp_version: "1.3.0"
+eqhm_enabled: true
 capabilities: ["Machine learning", "Deep learning", "Data engineering", "Python data stack", "MLOps", "Data analysis", "Feature engineering", "Model deployment"]
 ---
 

@@ -1,6 +1,9 @@
 ---
 name: nodejs-backend
 description: Master Node.js backend development with Express, Fastify, async/await, and building production APIs. Learn best practices for server-side JavaScript.
+sasmp_version: "1.3.0"
+bonded_agent: 01-frontend-web-development
+bond_type: PRIMARY_BOND
 ---
 
 # Node.js Backend

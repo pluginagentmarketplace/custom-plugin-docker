@@ -1,6 +1,9 @@
 ---
 name: ios-android-native
 description: Master native iOS development with Swift and native Android development with Kotlin.
+sasmp_version: "1.3.0"
+bonded_agent: 01-frontend-web-development
+bond_type: PRIMARY_BOND
 ---
 
 # Native iOS & Android

@@ -1,6 +1,9 @@
 ---
 name: python-java-go-rust
 description: Master Python, Java, Go, and Rust backend development. Learn framework patterns, concurrency models, and performance optimization for each language.
+sasmp_version: "1.3.0"
+bonded_agent: 01-frontend-web-development
+bond_type: PRIMARY_BOND
 ---
 
 # Python, Java, Go, Rust Backends

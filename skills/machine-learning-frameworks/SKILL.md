@@ -1,6 +1,9 @@
 ---
 name: machine-learning-frameworks
 description: Master scikit-learn, XGBoost, and traditional machine learning for classification, regression, and clustering problems.
+sasmp_version: "1.3.0"
+bonded_agent: 01-frontend-web-development
+bond_type: PRIMARY_BOND
 ---
 
 # Machine Learning Frameworks
