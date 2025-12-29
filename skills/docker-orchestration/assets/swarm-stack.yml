@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  web:
+    image: myapp:v1
+    deploy:
+      replicas: 3
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "80:3000"
+    networks:
+      - webnet
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+
+  db:
+    image: postgres:15-alpine
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - webnet
+
+volumes:
+  db-data:
+
+networks:
+  webnet:

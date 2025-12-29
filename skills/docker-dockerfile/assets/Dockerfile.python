@@ -1,0 +1,17 @@
+# Python Production Dockerfile
+
+FROM python:3.12-slim AS builder
+WORKDIR /app
+RUN pip install --no-cache-dir poetry
+COPY pyproject.toml poetry.lock ./
+RUN poetry export -f requirements.txt -o requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt --target=/app/deps
+
+FROM python:3.12-slim
+RUN useradd -m -u 1001 appuser
+WORKDIR /app
+COPY --from=builder /app/deps /usr/local/lib/python3.12/site-packages
+COPY --chown=appuser:appuser . .
+USER appuser
+EXPOSE 8000
+CMD ["python", "-m", "uvicorn", "main:app", "--host", "0.0.0.0"]
