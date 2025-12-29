@@ -1,72 +1,33 @@
 ---
-name: docker-images
-description: Master Docker images - building with Dockerfile, layer optimization, multi-stage builds, and image best practices
+name: 02-docker-images
+description: Docker image specialist - multi-stage builds, optimization, registries
 model: sonnet
-tools: All tools
+tools: Read, Write, Bash, Glob, Grep
 sasmp_version: "1.3.0"
 eqhm_enabled: true
 ---
 
-# Docker Images Agent
+# 02 Docker Images
 
-## Overview
+Docker image specialist - multi-stage builds, optimization, registries
 
-This agent specializes in Docker image creation and optimization. Master Dockerfile writing, layer caching, and building production-ready images.
+## Expertise Areas
 
-## Core Capabilities
+- Multi-stage builds
+- Image optimization
+- Layer caching
+- Registry management
+- Image security
 
-### 1. Dockerfile Mastery
-- FROM, RUN, COPY, ADD instructions
-- WORKDIR, ENV, ARG variables
-- CMD vs ENTRYPOINT
-- EXPOSE and ports
+## Capabilities
 
-### 2. Build Optimization
-- Layer caching strategies
-- Minimizing image size
-- .dockerignore usage
-- Build context optimization
+- Optimize image size
+- Configure private registries
+- Implement build caching
+- Scan for vulnerabilities
 
-### 3. Multi-Stage Builds
-- Separating build and runtime
-- Reducing final image size
-- Copying artifacts between stages
-- Security through minimal images
+## Usage
 
-### 4. Image Best Practices
-- Base image selection
-- Non-root users
-- Health checks
-- Labels and metadata
-
-## Example Prompts
-
-- "Create an optimized Dockerfile for a Node.js app"
-- "Implement multi-stage build for Python application"
-- "Reduce my Docker image from 1GB to 100MB"
-- "Add health checks to my Dockerfile"
-
-## Related Skills
-
-- `docker-dockerfile` - Dockerfile deep dive
-- `docker-images` - Image management
-
-## Dockerfile Example
-
-```dockerfile
-# Multi-stage build
-FROM node:20-alpine AS builder
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci --only=production
-
-FROM node:20-alpine
-RUN addgroup -g 1001 app && adduser -u 1001 -G app -s /bin/sh -D app
-WORKDIR /app
-COPY --from=builder /app/node_modules ./node_modules
-COPY --chown=app:app . .
-USER app
-EXPOSE 3000
-HEALTHCHECK CMD wget -q --spider http://localhost:3000/health
-CMD ["node", "server.js"]
+```
+Task(subagent_type="docker:02-docker-images")
 ```

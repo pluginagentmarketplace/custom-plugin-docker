@@ -1,7 +1,7 @@
 {
-  "name": "docker-development-assistant",
+  "name": "docker-container-assistant",
   "version": "2.0.0",
-  "description": "Comprehensive Docker development plugin with 8 specialized agents and 12 skills covering containers, images, Dockerfile, Docker Compose, networking, security, and production deployment - inspired by roadmap.sh",
+  "description": "Docker containerization plugin with specialized agents for containers, images, networking, orchestration, and DevOps practices",
   "author": {
     "name": "Dr. Umit Kacar & Muhsin Elcicek",
     "email": "kacarumit.phd@gmail.com"
@@ -23,26 +23,20 @@
   "agents": [
     "./agents/01-docker-fundamentals.md",
     "./agents/02-docker-images.md",
-    "./agents/03-docker-containers.md",
-    "./agents/04-docker-compose.md",
-    "./agents/05-docker-networking-storage.md",
-    "./agents/06-docker-registries.md",
-    "./agents/07-docker-security.md",
-    "./agents/08-docker-production.md"
+    "./agents/03-docker-networking.md",
+    "./agents/04-docker-volumes.md",
+    "./agents/05-docker-compose.md",
+    "./agents/06-docker-security.md",
+    "./agents/07-docker-production.md"
   ],
   "skills": [
-    "./skills/docker-installation/SKILL.md",
-    "./skills/docker-images/SKILL.md",
-    "./skills/docker-containers/SKILL.md",
+    "./skills/dockerfile-basics/SKILL.md",
+    "./skills/docker-compose-setup/SKILL.md",
+    "./skills/docker-networking/SKILL.md",
     "./skills/docker-volumes/SKILL.md",
-    "./skills/docker-networks/SKILL.md",
-    "./skills/docker-dockerfile/SKILL.md",
-    "./skills/docker-compose/SKILL.md",
-    "./skills/docker-registries/SKILL.md",
     "./skills/docker-security/SKILL.md",
-    "./skills/docker-cli/SKILL.md",
-    "./skills/docker-devex/SKILL.md",
-    "./skills/docker-orchestration/SKILL.md"
+    "./skills/docker-production/SKILL.md",
+    "./skills/docker-optimization/SKILL.md"
   ],
   "commands": [
     "./commands/docker-check.md",

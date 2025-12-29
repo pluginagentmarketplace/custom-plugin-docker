@@ -1,56 +1,28 @@
 ---
 name: docker-security
-description: Master Docker security - image scanning, runtime security, secrets, and container hardening
+description: Secure Docker containers and images
 sasmp_version: "1.3.0"
-bonded_agent: docker-security
+bonded_agent: 06-docker-security
 bond_type: PRIMARY_BOND
 ---
 
-# Docker Security Skill
+# Docker Security
 
-## Image Security
+Secure Docker containers and images
 
-```bash
-# Scan for vulnerabilities
-docker scout cves myimage
-trivy image myimage
+## Overview
 
-# Use minimal base
-FROM alpine:3.19
-FROM gcr.io/distroless/static
+Comprehensive guide to secure docker containers and images.
+
+## Topics Covered
+
+- Image scanning
+- Secrets management
+- Runtime security
+- Compliance
+
+## Usage
+
 ```
-
-## Runtime Security
-
-```bash
-# Non-root user
-docker run --user 1001 myapp
-
-# Read-only filesystem
-docker run --read-only myapp
-
-# Drop capabilities
-docker run --cap-drop=ALL myapp
-
-# No new privileges
-docker run --security-opt=no-new-privileges myapp
+Skill("docker-security")
 ```
-
-## Secrets Management
-
-```bash
-# Docker secrets (Swarm)
-echo "password" | docker secret create db_pass -
-docker service create --secret db_pass myapp
-
-# Compose secrets
-secrets:
-  db_pass:
-    file: ./secrets/db_pass.txt
-```
-
-## Assets
-- `security-scan.sh` - Scanning script
-
-## References
-- `SECURITY_GUIDE.md` - Best practices
