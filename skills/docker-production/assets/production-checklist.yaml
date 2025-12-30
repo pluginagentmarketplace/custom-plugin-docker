@@ -1,0 +1,24 @@
+# Docker Production Checklist
+pre_deployment:
+  - Image scanned for vulnerabilities
+  - All secrets in Docker secrets
+  - Resource limits configured
+  - Health checks defined
+  - Logging configured
+
+monitoring:
+  - Container metrics (CPU, memory)
+  - Application logs centralized
+  - Alerts configured
+  - Dashboard ready
+
+high_availability:
+  - Multiple replicas
+  - Load balancer configured
+  - Graceful shutdown handling
+  - Rolling update strategy
+
+backup_recovery:
+  - Volume backup scheduled
+  - Recovery tested
+  - Rollback plan documented

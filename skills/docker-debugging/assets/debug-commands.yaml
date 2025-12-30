@@ -1,0 +1,75 @@
+# Docker Debugging Commands Reference
+# Version: 1.0.0
+# Last Updated: 2025-12-29
+
+container_inspection:
+  # View container details
+  inspect: "docker inspect <container_id>"
+  # View running processes
+  top: "docker top <container_id>"
+  # View resource usage
+  stats: "docker stats <container_id> --no-stream"
+  # View port mappings
+  port: "docker port <container_id>"
+
+log_analysis:
+  # View all logs
+  all_logs: "docker logs <container_id>"
+  # Follow logs in real-time
+  follow: "docker logs -f <container_id>"
+  # Last N lines
+  tail: "docker logs --tail 100 <container_id>"
+  # With timestamps
+  timestamps: "docker logs -t <container_id>"
+  # Since specific time
+  since: "docker logs --since 30m <container_id>"
+
+interactive_debugging:
+  # Start bash in running container
+  exec_bash: "docker exec -it <container_id> /bin/bash"
+  # Start sh (if bash not available)
+  exec_sh: "docker exec -it <container_id> /bin/sh"
+  # Run specific command
+  exec_cmd: "docker exec <container_id> <command>"
+  # As root user
+  exec_root: "docker exec -u root -it <container_id> /bin/bash"
+
+network_debugging:
+  # View container networks
+  network_inspect: "docker network inspect <network_name>"
+  # Test DNS resolution
+  dns_test: "docker exec <container_id> nslookup <hostname>"
+  # Test connectivity
+  ping_test: "docker exec <container_id> ping -c 3 <target>"
+  # Check open ports
+  netstat: "docker exec <container_id> netstat -tlnp"
+
+resource_analysis:
+  # Disk usage
+  system_df: "docker system df -v"
+  # Container size
+  container_size: "docker ps -s"
+  # Image layers
+  image_history: "docker history <image>"
+
+health_checks:
+  # View health status
+  health_status: "docker inspect --format='{{.State.Health.Status}}' <container_id>"
+  # View health logs
+  health_log: "docker inspect --format='{{range .State.Health.Log}}{{.Output}}{{end}}' <container_id>"
+
+common_issues:
+  container_not_starting:
+    - "Check logs: docker logs <container_id>"
+    - "Check exit code: docker inspect -f '{{.State.ExitCode}}' <container_id>"
+    - "Review entrypoint/cmd in Dockerfile"
+
+  high_memory_usage:
+    - "Check limits: docker stats"
+    - "Add memory limit: --memory=512m"
+    - "Review application memory leaks"
+
+  network_issues:
+    - "Check network mode: docker inspect -f '{{.NetworkSettings.Networks}}' <container_id>"
+    - "Verify DNS: docker exec <container_id> cat /etc/resolv.conf"
+    - "Test inter-container: docker exec <container_id> ping <other_container>"

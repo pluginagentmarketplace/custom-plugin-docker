@@ -1,0 +1,124 @@
+# Production-Ready Docker Swarm Stack
+# Version: 1.0.0
+# Deploy: docker stack deploy -c swarm-stack.yaml myapp
+
+version: '3.8'
+
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - frontend
+      - backend
+    deploy:
+      mode: replicated
+      replicas: 3
+      update_config:
+        parallelism: 1
+        delay: 10s
+        failure_action: rollback
+        order: start-first
+      rollback_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      placement:
+        constraints:
+          - node.role == worker
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.25'
+          memory: 128M
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    configs:
+      - source: nginx_config
+        target: /etc/nginx/nginx.conf
+    secrets:
+      - ssl_certificate
+      - ssl_key
+
+  api:
+    image: myapp/api:latest
+    networks:
+      - backend
+      - database
+    environment:
+      - DATABASE_URL=postgres://db:5432/myapp
+    deploy:
+      mode: replicated
+      replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 10s
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+    secrets:
+      - db_password
+      - api_key
+
+  db:
+    image: postgres:15-alpine
+    networks:
+      - database
+    environment:
+      - POSTGRES_DB=myapp
+      - POSTGRES_USER=app
+      - POSTGRES_PASSWORD_FILE=/run/secrets/db_password
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      resources:
+        limits:
+          memory: 1G
+    secrets:
+      - db_password
+
+networks:
+  frontend:
+    driver: overlay
+  backend:
+    driver: overlay
+    internal: true
+  database:
+    driver: overlay
+    internal: true
+
+volumes:
+  db_data:
+    driver: local
+
+configs:
+  nginx_config:
+    file: ./nginx.conf
+
+secrets:
+  db_password:
+    external: true
+  ssl_certificate:
+    external: true
+  ssl_key:
+    external: true
+  api_key:
+    external: true

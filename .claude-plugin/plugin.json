@@ -1,7 +1,8 @@
 {
+  "schema_version": "1.0.0",
   "name": "docker-container-assistant",
-  "version": "2.0.0",
-  "description": "Docker containerization plugin with specialized agents for containers, images, networking, orchestration, and DevOps practices",
+  "version": "2.1.0",
+  "description": "Comprehensive Docker containerization plugin with 8 specialized agents and 12 Golden Format skills for containers, images, networking, orchestration, and production deployments",
   "author": {
     "name": "Dr. Umit Kacar & Muhsin Elcicek",
     "email": "kacarumit.phd@gmail.com"
@@ -18,7 +19,9 @@
     "networks",
     "orchestration",
     "devops",
-    "containerization"
+    "containerization",
+    "swarm",
+    "registry"
   ],
   "agents": [
     "./agents/01-docker-fundamentals.md",
@@ -27,7 +30,8 @@
     "./agents/04-docker-volumes.md",
     "./agents/05-docker-compose.md",
     "./agents/06-docker-security.md",
-    "./agents/07-docker-production.md"
+    "./agents/07-docker-production.md",
+    "./agents/08-docker-orchestration.md"
   ],
   "skills": [
     "./skills/dockerfile-basics/SKILL.md",
@@ -36,7 +40,12 @@
     "./skills/docker-volumes/SKILL.md",
     "./skills/docker-security/SKILL.md",
     "./skills/docker-production/SKILL.md",
-    "./skills/docker-optimization/SKILL.md"
+    "./skills/docker-optimization/SKILL.md",
+    "./skills/docker-debugging/SKILL.md",
+    "./skills/docker-registry/SKILL.md",
+    "./skills/docker-multi-stage/SKILL.md",
+    "./skills/docker-ci-cd/SKILL.md",
+    "./skills/docker-swarm/SKILL.md"
   ],
   "commands": [
     "./commands/docker-check.md",
@@ -44,5 +53,7 @@
     "./commands/docker-compose-up.md",
     "./commands/docker-debug.md"
   ],
-  "hooks": "./hooks/hooks.json"
+  "hooks": {
+    "hooks_config_path": "./hooks/hooks.json"
+  }
 }

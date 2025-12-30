@@ -1,0 +1,22 @@
+# Docker Volume Configuration Reference
+volume_types:
+  named_volume:
+    description: Docker-managed volume
+    command: "docker volume create myvolume"
+    usage: "-v myvolume:/data"
+
+  bind_mount:
+    description: Host directory mount
+    command: "docker run -v /host/path:/container/path"
+    usage: Good for development
+
+  tmpfs:
+    description: In-memory filesystem
+    command: "docker run --tmpfs /tmp"
+    usage: Temporary data, secrets
+
+backup_script: |
+  docker run --rm \
+    -v myvolume:/data \
+    -v $(pwd):/backup \
+    alpine tar cvf /backup/backup.tar /data
