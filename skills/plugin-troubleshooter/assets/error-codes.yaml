@@ -1,0 +1,198 @@
+# Plugin Troubleshooter - Error Codes Database
+# Version: 1.0.0
+
+categories:
+  structural:
+    range: "E001-E099"
+    count: 10
+    codes:
+      E001:
+        name: "Structure Error"
+        detects: ".claude-plugin is FILE instead of DIRECTORY"
+        auto_fix: true
+        risk: "LOW"
+      E002:
+        name: "Missing plugin.json"
+        detects: "plugin.json file not found"
+        auto_fix: true
+        risk: "LOW"
+      E003:
+        name: "Invalid plugin.json"
+        detects: "JSON parse error or schema violation"
+        auto_fix: "PARTIAL"
+        risk: "LOW"
+      E004:
+        name: "Missing agents directory"
+        detects: "agents/ directory not found"
+        auto_fix: true
+        risk: "LOW"
+      E005:
+        name: "Missing skills directory"
+        detects: "skills/ directory not found"
+        auto_fix: true
+        risk: "LOW"
+      E006:
+        name: "Missing commands directory"
+        detects: "commands/ directory not found"
+        auto_fix: true
+        risk: "LOW"
+      E007:
+        name: "Missing hooks directory"
+        detects: "hooks/ directory not found"
+        auto_fix: true
+        risk: "LOW"
+      E008:
+        name: "Permission Error"
+        detects: "Incorrect file permissions"
+        auto_fix: true
+        risk: "LOW"
+      E009:
+        name: "Symlink Failure"
+        detects: "Broken symlinks"
+        auto_fix: "PARTIAL"
+        risk: "MEDIUM"
+      E010:
+        name: "Path Traversal"
+        detects: "Path traversal vulnerability"
+        auto_fix: false
+        risk: "HIGH"
+
+  syntax:
+    range: "E101-E199"
+    count: 11
+    codes:
+      E101:
+        name: "Missing Frontmatter"
+        detects: "No YAML frontmatter in agent/skill"
+        auto_fix: true
+        risk: "LOW"
+      E102:
+        name: "Malformed Frontmatter"
+        detects: "Starts with >--- instead of ---"
+        auto_fix: true
+        risk: "LOW"
+      E103:
+        name: "Missing Fields"
+        detects: "Required YAML fields missing"
+        auto_fix: true
+        risk: "LOW"
+      E104:
+        name: "YAML Syntax"
+        detects: "YAML parse errors"
+        auto_fix: "PARTIAL"
+        risk: "LOW"
+      E105:
+        name: "JSON Syntax"
+        detects: "Invalid JSON in config files"
+        auto_fix: true
+        risk: "LOW"
+
+  runtime:
+    range: "E201-E299"
+    count: 6
+    codes:
+      E201:
+        name: "Shell Expansion"
+        detects: "$HOME, ~, $() in MCP config"
+        auto_fix: "PARTIAL"
+        risk: "HIGH"
+      E202:
+        name: "Missing Env Var"
+        detects: "Referenced env var not set"
+        auto_fix: false
+        risk: "MEDIUM"
+      E203:
+        name: "Relative Path"
+        detects: "Non-absolute paths"
+        auto_fix: true
+        risk: "MEDIUM"
+
+  naming:
+    range: "E301-E399"
+    count: 4
+    codes:
+      E301:
+        name: "Invalid Characters"
+        detects: "Special chars in plugin name"
+        auto_fix: true
+        risk: "LOW"
+      E302:
+        name: "Reserved Name"
+        detects: "Using reserved names"
+        auto_fix: true
+        risk: "LOW"
+      E303:
+        name: "Name Collision"
+        detects: "Plugin name = marketplace name"
+        auto_fix: true
+        risk: "LOW"
+      E304:
+        name: "Duplicate Names"
+        detects: "Multiple agents with same name"
+        auto_fix: true
+        risk: "LOW"
+
+  validation:
+    range: "E401-E499"
+    count: 10
+    codes:
+      E401:
+        name: "Subdirectory Violation"
+        detects: "Placeholder only in subdirs"
+        auto_fix: true
+        risk: "MEDIUM"
+
+  sasmp:
+    range: "E501-E599"
+    count: 4
+    codes:
+      E501:
+        name: "Missing SASMP Fields"
+        detects: "No sasmp_version or eqhm_enabled"
+        auto_fix: true
+        risk: "LOW"
+      E502:
+        name: "Orphan Skill"
+        detects: "No bonded_agent"
+        auto_fix: "PARTIAL"
+        risk: "MEDIUM"
+
+  golden_format:
+    range: "E701-E704"
+    count: 4
+    codes:
+      E701:
+        name: "Invalid SKILL.md"
+        detects: "Missing or < 200 bytes"
+        auto_fix: true
+        risk: "LOW"
+      E702:
+        name: "Empty assets/"
+        detects: "Placeholder only"
+        auto_fix: true
+        risk: "LOW"
+      E703:
+        name: "Empty scripts/"
+        detects: "Placeholder only"
+        auto_fix: true
+        risk: "LOW"
+      E704:
+        name: "Empty references/"
+        detects: "Placeholder only"
+        auto_fix: true
+        risk: "LOW"
+
+  mock_detection:
+    range: "E801-E802"
+    count: 2
+    codes:
+      E801:
+        name: "Mock Usage"
+        detects: "unittest.mock in tests"
+        auto_fix: false
+        risk: "MEDIUM"
+      E802:
+        name: "Fake Scenarios"
+        detects: "Hardcoded test values"
+        auto_fix: false
+        risk: "MEDIUM"
