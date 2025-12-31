@@ -1,1 +1,71 @@
-{"hooks": {}}
+{
+  "hooks": {
+    "pre_command": [
+      {
+        "name": "health-check-reminder",
+        "description": "Remind about health check for plugin operations",
+        "enabled": true,
+        "trigger_commands": ["/health-check", "/diagnose", "/fix-golden-format", "/validate-structure"],
+        "action": "log",
+        "message": "Plugin Health Agent: Running diagnostic command..."
+      }
+    ],
+    "post_install": [
+      {
+        "name": "auto-health-check",
+        "description": "Automatically run health check after plugin installation",
+        "enabled": true,
+        "action": "run_skill",
+        "skill": "plugin-health-monitor",
+        "parameters": {
+          "check_type": "full",
+          "output_format": "text"
+        }
+      }
+    ],
+    "on_error": [
+      {
+        "name": "auto-diagnose",
+        "description": "Automatically diagnose errors using troubleshooter",
+        "enabled": true,
+        "action": "run_skill",
+        "skill": "plugin-troubleshooter",
+        "parameters": {
+          "deep_scan": true,
+          "include_logs": true
+        }
+      }
+    ],
+    "scheduled": [
+      {
+        "name": "periodic-health-check",
+        "description": "Run health check every hour",
+        "enabled": false,
+        "interval": "1h",
+        "action": "run_skill",
+        "skill": "plugin-health-monitor",
+        "parameters": {
+          "check_type": "quick",
+          "output_format": "json"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "log_level": "INFO",
+    "log_file": "/tmp/plugin-health-agent.log",
+    "auto_backup": true,
+    "backup_location": "/tmp/plugin-backup",
+    "notification": {
+      "enabled": true,
+      "threshold_warning": 85,
+      "threshold_critical": 70
+    }
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "created": "2025-12-30",
+    "author": "Plugin Health Agent",
+    "description": "Hooks configuration for automated health monitoring and diagnostics"
+  }
+}

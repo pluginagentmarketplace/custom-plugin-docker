@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Plugin Health Monitor Input Schema",
+  "description": "Schema for plugin-health-monitor skill input parameters",
+  "type": "object",
+  "properties": {
+    "plugin_path": {
+      "type": "string",
+      "description": "Absolute path to the plugin directory to monitor",
+      "pattern": "^/.*"
+    },
+    "check_type": {
+      "type": "string",
+      "description": "Type of health check to perform",
+      "enum": ["full", "quick", "structure", "syntax", "mcp", "loading", "stability"],
+      "default": "full"
+    },
+    "threshold_warning": {
+      "type": "integer",
+      "description": "Score threshold for WARNING status",
+      "default": 85,
+      "minimum": 0,
+      "maximum": 100
+    },
+    "threshold_critical": {
+      "type": "integer",
+      "description": "Score threshold for CRITICAL status",
+      "default": 70,
+      "minimum": 0,
+      "maximum": 100
+    },
+    "include_history": {
+      "type": "boolean",
+      "description": "Include error history in report",
+      "default": true
+    },
+    "output_format": {
+      "type": "string",
+      "description": "Output format for health report",
+      "enum": ["text", "json", "yaml"],
+      "default": "text"
+    },
+    "verbose": {
+      "type": "boolean",
+      "description": "Enable verbose output with details",
+      "default": false
+    }
+  },
+  "required": ["plugin_path"],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "plugin_path": "/home/user/my-plugin",
+      "check_type": "full"
+    },
+    {
+      "plugin_path": "/home/user/my-plugin",
+      "check_type": "quick",
+      "output_format": "json"
+    },
+    {
+      "plugin_path": "/home/user/my-plugin",
+      "threshold_warning": 90,
+      "threshold_critical": 75,
+      "verbose": true
+    }
+  ]
+}

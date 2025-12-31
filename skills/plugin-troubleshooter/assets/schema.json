@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Plugin Troubleshooter Input Schema",
+  "description": "Schema for plugin-troubleshooter skill input parameters",
+  "type": "object",
+  "properties": {
+    "plugin_path": {
+      "type": "string",
+      "description": "Absolute path to the plugin directory",
+      "pattern": "^/.*"
+    },
+    "symptom": {
+      "type": "string",
+      "description": "Reported symptom or issue description",
+      "maxLength": 500
+    },
+    "error_codes": {
+      "type": "array",
+      "description": "Specific error codes to check",
+      "items": {
+        "type": "string",
+        "pattern": "^E[0-9]{3}$"
+      },
+      "default": []
+    },
+    "category": {
+      "type": "string",
+      "description": "Error category to focus on",
+      "enum": ["structural", "syntax", "runtime", "naming", "validation", "sasmp", "testing", "golden_format", "mock"]
+    },
+    "deep_scan": {
+      "type": "boolean",
+      "description": "Enable thorough deep scan analysis",
+      "default": false
+    },
+    "include_logs": {
+      "type": "boolean",
+      "description": "Include log analysis in diagnosis",
+      "default": true
+    },
+    "auto_fix": {
+      "type": "boolean",
+      "description": "Automatically fix detected issues",
+      "default": false
+    },
+    "output_format": {
+      "type": "string",
+      "description": "Output format for diagnosis report",
+      "enum": ["text", "json", "yaml"],
+      "default": "text"
+    }
+  },
+  "required": ["plugin_path"],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "plugin_path": "/home/user/my-plugin"
+    },
+    {
+      "plugin_path": "/home/user/my-plugin",
+      "symptom": "Agent not loading",
+      "deep_scan": true
+    },
+    {
+      "plugin_path": "/home/user/my-plugin",
+      "error_codes": ["E102", "E201", "E401"],
+      "auto_fix": true
+    },
+    {
+      "plugin_path": "/home/user/my-plugin",
+      "category": "golden_format",
+      "output_format": "json"
+    }
+  ]
+}
