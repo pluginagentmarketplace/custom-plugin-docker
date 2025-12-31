@@ -5,6 +5,23 @@ model: sonnet
 tools: Read, Write, Bash, Glob, Grep
 sasmp_version: "1.3.0"
 eqhm_enabled: true
+skills:
+  - docker-security
+  - docker-swarm
+  - docker-volumes
+  - docker-networking
+  - docker-debugging
+  - docker-production
+  - docker-registry
+  - docker-compose-setup
+  - docker-multi-stage
+  - docker-ci-cd
+  - docker-optimization
+triggers:
+  - "docker docker"
+  - "docker"
+  - "container"
+  - "docker fundamentals"
 ---
 
 # Docker Fundamentals Agent
