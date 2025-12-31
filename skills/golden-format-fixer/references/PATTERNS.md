@@ -1,0 +1,240 @@
+# Golden Format Fixer Patterns
+
+Design patterns and best practices for automated Golden Format repair.
+
+## Core Patterns
+
+### Pattern 1: Detect Before Fix
+
+Always detect violations before attempting fixes:
+
+```python
+def fix_skill(skill_path):
+    # Step 1: Detect violations
+    violations = detect_violations(skill_path)
+
+    if not violations:
+        return {"status": "clean", "fixes": 0}
+
+    # Step 2: Fix each violation
+    for violation in violations:
+        fix_violation(violation)
+
+    # Step 3: Verify fixes
+    remaining = detect_violations(skill_path)
+
+    return {
+        "status": "fixed" if not remaining else "partial",
+        "fixes": len(violations) - len(remaining)
+    }
+```
+
+### Pattern 2: Category-Aware Generation
+
+Generate content based on detected category:
+
+```python
+def generate_content(skill_name: str) -> Dict:
+    # Auto-detect category
+    category = detect_category(skill_name)
+
+    # Get category-specific templates
+    templates = CATEGORY_TEMPLATES[category]
+
+    # Generate with templates
+    return {
+        "config": generate_config(skill_name, templates),
+        "scripts": generate_scripts(skill_name, templates),
+        "docs": generate_docs(skill_name, templates)
+    }
+```
+
+### Pattern 3: Backup-First Approach
+
+Always create backups before modifications:
+
+```python
+def safe_fix(skill_path: Path):
+    # Create timestamped backup
+    backup = create_backup(skill_path)
+
+    try:
+        # Attempt fixes
+        apply_fixes(skill_path)
+
+        # Verify success
+        if not verify_fixes(skill_path):
+            raise FixError("Verification failed")
+
+    except Exception as e:
+        # Restore from backup
+        restore_backup(backup)
+        raise FixError(f"Fix failed, restored backup: {e}")
+
+    return True
+```
+
+## Anti-Patterns to Avoid
+
+### Anti-Pattern 1: Overwriting Without Backup
+
+```python
+# BAD - No backup
+def bad_fix(skill_path):
+    (skill_path / 'config.yaml').write_text(new_content)
+
+# GOOD - With backup
+def good_fix(skill_path):
+    backup = create_backup(skill_path)
+    try:
+        (skill_path / 'config.yaml').write_text(new_content)
+    except:
+        restore_backup(backup)
+        raise
+```
+
+### Anti-Pattern 2: Generic Content Only
+
+```python
+# BAD - Same content for all
+def bad_generate():
+    return GENERIC_TEMPLATE
+
+# GOOD - Category-aware
+def good_generate(skill_name):
+    category = detect_category(skill_name)
+    return CATEGORY_TEMPLATES[category]
+```
+
+### Anti-Pattern 3: Silent Failures
+
+```python
+# BAD - Ignores errors
+def bad_process(path):
+    try:
+        fix_all(path)
+    except:
+        pass  # Errors lost!
+
+# GOOD - Reports errors
+def good_process(path):
+    try:
+        fix_all(path)
+    except FixError as e:
+        log.error(f"Fix failed: {e}")
+        return {"success": False, "error": str(e)}
+    return {"success": True}
+```
+
+## Workflow Patterns
+
+### Batch Fix Workflow
+
+```
+1. Scan all skills
+2. Detect violations for each
+3. Sort by severity
+4. Fix in order (low risk first)
+5. Verify each fix
+6. Generate report
+```
+
+### Interactive Fix Workflow
+
+```
+1. Show violations
+2. Ask user to confirm
+3. Create backup
+4. Apply fixes
+5. Show results
+6. Offer rollback option
+```
+
+## Performance Patterns
+
+### Lazy Loading
+
+```python
+# Load templates only when needed
+_templates = None
+
+def get_templates():
+    global _templates
+    if _templates is None:
+        _templates = load_templates()
+    return _templates
+```
+
+### Batch Operations
+
+```python
+# Process multiple skills efficiently
+def batch_fix(plugin_path: Path):
+    skills = list(plugin_path.glob('skills/*'))
+
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        results = executor.map(fix_skill, skills)
+
+    return list(results)
+```
+
+## Error Handling Patterns
+
+### Graceful Degradation
+
+```python
+def fix_with_fallback(skill_path):
+    try:
+        # Try full fix
+        return full_fix(skill_path)
+    except TemplateError:
+        # Fall back to generic
+        return generic_fix(skill_path)
+    except PermissionError:
+        # Report but don't fail
+        return {"status": "skipped", "reason": "permission denied"}
+```
+
+### Chain of Responsibility
+
+```python
+def fix_violations(violations):
+    for violation in violations:
+        handler = get_handler(violation.code)
+
+        if handler:
+            handler.fix(violation)
+        else:
+            log.warning(f"No handler for {violation.code}")
+```
+
+## Testing Patterns
+
+### Validation After Fix
+
+```python
+def test_fix_e702():
+    # Setup
+    skill = create_test_skill(with_empty_assets=True)
+
+    # Fix
+    fix_skill(skill)
+
+    # Verify
+    assert (skill / 'assets' / 'config.yaml').exists()
+    assert (skill / 'assets' / 'schema.json').exists()
+
+    # Validate content
+    config = yaml.safe_load((skill / 'assets' / 'config.yaml').read_text())
+    assert 'skill' in config
+```
+
+## See Also
+
+- [FIXER-GUIDE.md](FIXER-GUIDE.md)
+- [SKILL.md](../SKILL.md)
+- [Error Codes](../../../references/ERROR-CODES.md)
+
+---
+
+Generated by plugin-health-agent

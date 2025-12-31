@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Golden Format Fixer Input Schema",
+  "description": "Schema for golden-format-fixer skill input parameters",
+  "type": "object",
+  "properties": {
+    "plugin_path": {
+      "type": "string",
+      "description": "Absolute path to the plugin directory",
+      "pattern": "^/.*"
+    },
+    "skill_name": {
+      "type": "string",
+      "description": "Specific skill to fix (optional, fixes all if not provided)",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "error_codes": {
+      "type": "array",
+      "description": "Specific error codes to fix",
+      "items": {
+        "type": "string",
+        "enum": ["E701", "E702", "E703", "E704"]
+      },
+      "default": ["E701", "E702", "E703", "E704"]
+    },
+    "category": {
+      "type": "string",
+      "description": "Force content category (auto-detected if not provided)",
+      "enum": ["api", "testing", "devops", "security", "database", "frontend", "ml", "containers", "health", "general"]
+    },
+    "dry_run": {
+      "type": "boolean",
+      "description": "Preview changes without applying",
+      "default": false
+    },
+    "backup": {
+      "type": "boolean",
+      "description": "Create backup before fixing",
+      "default": true
+    },
+    "verbose": {
+      "type": "boolean",
+      "description": "Enable verbose output",
+      "default": false
+    }
+  },
+  "required": ["plugin_path"],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "plugin_path": "/home/user/my-plugin",
+      "dry_run": true
+    },
+    {
+      "plugin_path": "/home/user/my-plugin",
+      "skill_name": "api-client",
+      "error_codes": ["E702", "E703"]
+    },
+    {
+      "plugin_path": "/home/user/my-plugin",
+      "category": "api",
+      "backup": true,
+      "verbose": true
+    }
+  ]
+}

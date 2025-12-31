@@ -1,0 +1,97 @@
+# Golden Format Validator Configuration
+# Version: 1.0.0
+
+validator:
+  # Validation thresholds
+  thresholds:
+    min_skill_md_size: 200       # Minimum SKILL.md bytes
+    min_asset_file_size: 100     # Minimum asset file bytes
+    min_reference_file_size: 100 # Minimum reference file bytes
+    min_script_lines: 20         # Minimum script lines
+
+  # Strict mode settings
+  strict_mode:
+    enabled: false
+    fail_on_warning: false
+    require_all_subdirs: true
+
+  # Report settings
+  reporting:
+    format: text                 # text, json, yaml
+    include_suggestions: true
+    include_statistics: true
+    output_file: null            # null for stdout
+
+# Golden Format requirements
+requirements:
+  skill_md:
+    required: true
+    min_size: 200
+    must_have_frontmatter: true
+    required_fields:
+      - name
+      - description
+      - sasmp_version
+      - bonded_agent
+      - bond_type
+
+  assets:
+    required: true
+    min_files: 1
+    exclude_patterns:
+      - ".gitkeep"
+      - "README.md"  # Only if < 100 bytes
+    recommended_files:
+      - config.yaml
+      - schema.json
+
+  scripts:
+    required: true
+    min_files: 1
+    exclude_patterns:
+      - ".gitkeep"
+      - "README.md"
+    recommended_files:
+      - validate.py
+
+  references:
+    required: true
+    min_files: 1
+    exclude_patterns:
+      - ".gitkeep"
+      - "README.md"
+    recommended_files:
+      - GUIDE.md
+      - PATTERNS.md
+
+# Error code definitions
+error_codes:
+  E701:
+    name: "Invalid SKILL.md"
+    severity: LOW
+    auto_fixable: true
+    description: "SKILL.md missing or too small"
+
+  E702:
+    name: "Empty assets/"
+    severity: LOW
+    auto_fixable: true
+    description: "assets/ contains only placeholders"
+
+  E703:
+    name: "Empty scripts/"
+    severity: LOW
+    auto_fixable: true
+    description: "scripts/ contains only placeholders"
+
+  E704:
+    name: "Empty references/"
+    severity: LOW
+    auto_fixable: true
+    description: "references/ contains only placeholders"
+
+# Statistics tracking
+statistics:
+  track_validations: true
+  cache_results: true
+  cache_ttl: 300  # seconds

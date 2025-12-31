@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Plugin Recovery Specialist Input Schema",
+  "description": "Schema for plugin-recovery-specialist skill input parameters",
+  "type": "object",
+  "properties": {
+    "plugin_path": {
+      "type": "string",
+      "description": "Absolute path to the plugin directory",
+      "pattern": "^/.*"
+    },
+    "action": {
+      "type": "string",
+      "description": "Recovery action to perform",
+      "enum": [
+        "cache_clear",
+        "config_restore",
+        "permission_fix",
+        "version_rollback",
+        "full_reinstall",
+        "backup_create",
+        "backup_restore"
+      ]
+    },
+    "backup_dir": {
+      "type": "string",
+      "description": "Custom backup directory location",
+      "default": "/tmp/plugin-backup"
+    },
+    "backup_id": {
+      "type": "string",
+      "description": "Specific backup ID to restore (for backup_restore action)",
+      "pattern": "^[0-9]{8}_[0-9]{6}$"
+    },
+    "target_version": {
+      "type": "string",
+      "description": "Target version for rollback",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "confirm_high_risk": {
+      "type": "boolean",
+      "description": "Confirmation for HIGH risk actions",
+      "default": false
+    },
+    "dry_run": {
+      "type": "boolean",
+      "description": "Preview actions without executing",
+      "default": false
+    },
+    "verbose": {
+      "type": "boolean",
+      "description": "Enable verbose output",
+      "default": false
+    }
+  },
+  "required": ["plugin_path", "action"],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "plugin_path": "/home/user/my-plugin",
+      "action": "cache_clear"
+    },
+    {
+      "plugin_path": "/home/user/my-plugin",
+      "action": "permission_fix",
+      "dry_run": true
+    },
+    {
+      "plugin_path": "/home/user/my-plugin",
+      "action": "version_rollback",
+      "target_version": "1.0.0",
+      "confirm_high_risk": true
+    },
+    {
+      "plugin_path": "/home/user/my-plugin",
+      "action": "backup_restore",
+      "backup_id": "20251230_143000"
+    }
+  ]
+}

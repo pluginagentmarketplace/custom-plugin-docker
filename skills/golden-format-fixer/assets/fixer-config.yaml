@@ -1,0 +1,152 @@
+# Golden Format Fixer Configuration
+# Version: 1.0.0
+
+fixer:
+  # Backup settings
+  backup:
+    enabled: true
+    location: /tmp/golden-format-backup
+    retention_days: 7
+
+  # Fix modes
+  modes:
+    dry_run: false
+    verbose: true
+    interactive: false
+
+  # Content generation
+  generation:
+    min_skill_md_lines: 50
+    min_asset_size: 100
+    min_script_lines: 50
+    min_reference_lines: 50
+
+# Category detection patterns
+categories:
+  api:
+    patterns:
+      - "api"
+      - "rest"
+      - "graphql"
+      - "http"
+      - "endpoint"
+    assets:
+      - config.yaml
+      - schema.json
+      - endpoints.yaml
+    scripts:
+      - validate.py
+      - test_api.py
+    references:
+      - API-GUIDE.md
+      - PATTERNS.md
+
+  testing:
+    patterns:
+      - "test"
+      - "spec"
+      - "qa"
+      - "quality"
+    assets:
+      - test-config.yaml
+      - fixtures.json
+    scripts:
+      - run_tests.py
+      - setup_fixtures.py
+    references:
+      - TESTING-GUIDE.md
+      - PATTERNS.md
+
+  devops:
+    patterns:
+      - "deploy"
+      - "ci"
+      - "cd"
+      - "pipeline"
+      - "build"
+    assets:
+      - pipeline.yaml
+      - deploy-config.yaml
+    scripts:
+      - deploy.sh
+      - validate_pipeline.py
+    references:
+      - DEVOPS-GUIDE.md
+      - PATTERNS.md
+
+  security:
+    patterns:
+      - "auth"
+      - "security"
+      - "encrypt"
+      - "token"
+      - "permission"
+    assets:
+      - security-rules.yaml
+      - policy.json
+    scripts:
+      - audit.py
+      - validate_security.py
+    references:
+      - SECURITY-GUIDE.md
+      - BEST-PRACTICES.md
+
+  health:
+    patterns:
+      - "health"
+      - "monitor"
+      - "diagnostic"
+      - "troubleshoot"
+      - "recovery"
+      - "validator"
+      - "fixer"
+    assets:
+      - config.yaml
+      - schema.json
+    scripts:
+      - validate.py
+      - fix.py
+    references:
+      - GUIDE.md
+      - PATTERNS.md
+
+  general:
+    patterns: []
+    assets:
+      - config.yaml
+      - schema.json
+    scripts:
+      - validate.py
+    references:
+      - GUIDE.md
+      - PATTERNS.md
+
+# Error code mappings
+error_codes:
+  E701:
+    name: "Invalid SKILL.md"
+    fix: "generate_skill_md"
+    template: "skill_md_template.md"
+  E702:
+    name: "Empty assets/"
+    fix: "generate_assets"
+    files:
+      - config.yaml
+      - schema.json
+  E703:
+    name: "Empty scripts/"
+    fix: "generate_scripts"
+    files:
+      - validate.py
+  E704:
+    name: "Empty references/"
+    fix: "generate_references"
+    files:
+      - GUIDE.md
+      - PATTERNS.md
+
+# Statistics tracking
+statistics:
+  track_fixes: true
+  log_file: /tmp/golden-format-fixer.log
+  report_format: json

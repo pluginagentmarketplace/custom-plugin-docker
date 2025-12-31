@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Golden Format Validator Input Schema",
+  "description": "Schema for golden-format-validator skill input parameters",
+  "type": "object",
+  "properties": {
+    "plugin_path": {
+      "type": "string",
+      "description": "Absolute path to the plugin directory",
+      "pattern": "^/.*"
+    },
+    "skill_name": {
+      "type": "string",
+      "description": "Specific skill to validate (optional, validates all if not provided)",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "strict_mode": {
+      "type": "boolean",
+      "description": "Enable strict validation mode",
+      "default": false
+    },
+    "min_skill_size": {
+      "type": "integer",
+      "description": "Minimum SKILL.md size in bytes",
+      "default": 200,
+      "minimum": 1
+    },
+    "min_asset_size": {
+      "type": "integer",
+      "description": "Minimum asset file size in bytes",
+      "default": 100,
+      "minimum": 1
+    },
+    "report_format": {
+      "type": "string",
+      "description": "Output format for validation report",
+      "enum": ["text", "json", "yaml"],
+      "default": "text"
+    },
+    "include_suggestions": {
+      "type": "boolean",
+      "description": "Include fix suggestions in report",
+      "default": true
+    }
+  },
+  "required": ["plugin_path"],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "plugin_path": "/home/user/my-plugin"
+    },
+    {
+      "plugin_path": "/home/user/my-plugin",
+      "strict_mode": true,
+      "report_format": "json"
+    },
+    {
+      "plugin_path": "/home/user/my-plugin",
+      "skill_name": "api-client",
+      "include_suggestions": true
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Skill Subdirectory Validator Input Schema",
+  "description": "Schema for skill-subdirectory-validator skill input parameters",
+  "type": "object",
+  "properties": {
+    "plugin_path": {
+      "type": "string",
+      "description": "Absolute path to the plugin directory",
+      "pattern": "^/.*"
+    },
+    "skill_name": {
+      "type": "string",
+      "description": "Specific skill to validate (optional, validates all if not provided)",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "subdirectories": {
+      "type": "array",
+      "description": "Specific subdirectories to check",
+      "items": {
+        "type": "string",
+        "enum": ["assets", "scripts", "references"]
+      },
+      "default": ["assets", "scripts", "references"]
+    },
+    "strict_mode": {
+      "type": "boolean",
+      "description": "Fail on any placeholder-only directory",
+      "default": true
+    },
+    "report_format": {
+      "type": "string",
+      "description": "Output format for report",
+      "enum": ["text", "json", "yaml"],
+      "default": "text"
+    },
+    "include_suggestions": {
+      "type": "boolean",
+      "description": "Include fix suggestions",
+      "default": true
+    },
+    "show_file_details": {
+      "type": "boolean",
+      "description": "Show file sizes and counts",
+      "default": false
+    }
+  },
+  "required": ["plugin_path"],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "plugin_path": "/home/user/my-plugin"
+    },
+    {
+      "plugin_path": "/home/user/my-plugin",
+      "skill_name": "api-client",
+      "strict_mode": true
+    },
+    {
+      "plugin_path": "/home/user/my-plugin",
+      "subdirectories": ["assets", "scripts"],
+      "report_format": "json"
+    }
+  ]
+}

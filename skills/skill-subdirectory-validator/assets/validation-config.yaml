@@ -1,0 +1,93 @@
+# Skill Subdirectory Validator Configuration
+# Version: 1.0.0
+
+validator:
+  # E401 detection settings
+  e401:
+    # Placeholder detection
+    placeholder_patterns:
+      - ".gitkeep"
+      - ".keep"
+      - ".placeholder"
+
+    # Small README threshold (bytes)
+    small_readme_threshold: 100
+
+    # Required subdirectories
+    required_subdirectories:
+      - assets
+      - scripts
+      - references
+
+  # Reporting
+  reporting:
+    format: text  # text, json, yaml
+    include_suggestions: true
+    show_file_sizes: true
+    group_by_skill: true
+
+  # Validation behavior
+  behavior:
+    fail_on_missing_dir: true
+    fail_on_placeholder_only: true
+    check_file_sizes: true
+    recursive: false
+
+# Expected content by subdirectory
+expected_content:
+  assets:
+    description: "Configuration files, schemas, templates"
+    min_files: 1
+    recommended:
+      - config.yaml
+      - schema.json
+    size_threshold: 100
+
+  scripts:
+    description: "Executable scripts for automation"
+    min_files: 1
+    recommended:
+      - validate.py
+    size_threshold: 100
+    must_be_executable: true
+
+  references:
+    description: "Documentation and guides"
+    min_files: 1
+    recommended:
+      - GUIDE.md
+      - PATTERNS.md
+    size_threshold: 100
+
+# Category-specific requirements
+category_overrides:
+  api:
+    assets:
+      recommended:
+        - config.yaml
+        - schema.json
+        - endpoints.yaml
+    scripts:
+      recommended:
+        - validate.py
+        - test_api.py
+
+  testing:
+    scripts:
+      recommended:
+        - run_tests.py
+        - setup_fixtures.py
+
+  devops:
+    assets:
+      recommended:
+        - pipeline.yaml
+        - deploy-config.yaml
+    scripts:
+      recommended:
+        - deploy.sh
+
+# Statistics
+statistics:
+  track_validations: true
+  log_violations: true
