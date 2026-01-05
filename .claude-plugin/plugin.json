@@ -52,8 +52,5 @@
     "./commands/docker-build.md",
     "./commands/docker-compose-up.md",
     "./commands/docker-debug.md"
-  ],
-  "hooks": {
-    "hooks_config_path": "./hooks/hooks.json"
-  }
+  ]
 }

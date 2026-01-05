@@ -63,7 +63,7 @@
 
 ```bash
 # Step 1️⃣ Add the marketplace
-/plugin add marketplace pluginagentmarketplace/custom-plugin-docker
+/plugin marketplace add pluginagentmarketplace/custom-plugin-docker
 
 # Step 2️⃣ Install the plugin
 /plugin install docker-development-assistant@docker-assistant-marketplace
